@@ -1,4 +1,0 @@
-# PhishGuard v16 — Decision Threshold
-# score >= threshold -> PHISHING
-# score <  threshold -> ALLOW
-0.758658

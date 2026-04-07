@@ -1,0 +1,2 @@
+nn_weight=0.5000
+xgb_weight=0.5000

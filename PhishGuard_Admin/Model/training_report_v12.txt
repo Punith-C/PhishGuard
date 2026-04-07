@@ -1,0 +1,49 @@
+PhishGuard v12 — Final Training Report
+=======================================================
+
+Machine      : Linux Mint  i5  8CPU  8GB+62GB
+Total time   : 16.2 minutes
+Features     : 72  (hostname-only, unchanged)
+Dataset      : 1,368,235  phish=168,235  legit=1,200,000
+
+KEY v12 IMPROVEMENTS (over v11)
+  - MAX_LEGIT raised 700k → 1.2M
+  - Deep legit patterns: 5,724 entries (login.accounts.X.com)
+  - REAL_LEGIT explicit injection: 60 known-safe hosts
+  - Harder phishing: brand.com.verify.xyz patterns
+  - XGBoost: max_depth=6 gamma=0.5 reg_lambda=3.0 max_delta_step=2
+  - Neural Net: 256→128→64→32 (was 512→256→128→64)
+  - FPR calibration target: 0.2% (v11: 0.5%)
+
+XGBoost   Acc=97.34%  F1=0.8971  AUC=0.9844  FPR=2.242%
+NeuralNet Acc=97.40%  F1=0.8991  AUC=0.9845  FPR=2.179%
+ENSEMBLE  Acc=97.42%  F1=0.9001  AUC=0.9854  FPR=2.159%
+
+Calibrated threshold : 0.951725
+Calibrated FPR       : 0.241%
+Calibrated FNR       : 30.283%
+
+Live tests  : 64/64 (100%)
+
+Top 20 Features (XGBoost importance)
+-----------------------------------
+  is_ip                                0.412986
+  brand_not_real                       0.101674
+  label_count                          0.067585
+  brand_count                          0.061597
+  sub_len                              0.044101
+  sub_count                            0.037418
+  digit_count                          0.035681
+  dot_count                            0.027785
+  multi_sub                            0.025399
+  sub_hyphens                          0.017580
+  sus_tld                              0.011958
+  sub_dots                             0.011701
+  sld_digits                           0.011451
+  very_long_host                       0.008346
+  keyword_count                        0.007909
+  special_count                        0.007720
+  kw_banking                           0.006544
+  sub_entropy                          0.006427
+  digit_ratio                          0.006238
+  sld_len                              0.005462

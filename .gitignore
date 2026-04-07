@@ -1,0 +1,4 @@
+PhishGuard_Admin/tf_env/
+PhishGuard_Admin/__pycache__/
+PhishGuard_Admin/*.pyc
+PhishGuard_Admin/admin/node_modules/

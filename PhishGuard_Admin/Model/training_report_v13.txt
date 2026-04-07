@@ -1,0 +1,43 @@
+PhishGuard v13 FINAL — Training Report
+=======================================================
+
+Machine      : Linux Mint i5 8CPU 8GB+62GB swap
+Total time   : 36.8 minutes
+Features     : 72  (hostname-only, unchanged)
+Dataset      : 1,258,096  phish=118,531  legit=1,139,565
+
+TRUSTED_ROOTS: 69,547 domains  (was ~500 in v12)
+  Seed curated: 1,030
+  Tranco top-70k: 69,069
+
+KEY FIX: is_trusted() O(labels) suffix lookup
+  Old: O(100k) loop per call → billions of ops
+  New: split hostname, O(1) set lookup per label
+
+XGBoost   Acc=91.91%  F1=0.6991  AUC=0.9862  FPR=8.901%
+NeuralNet Acc=91.87%  F1=0.6978  AUC=0.9861  FPR=8.942%
+ENSEMBLE  Acc=91.90%  F1=0.6989  AUC=0.9864  FPR=8.912%
+
+Threshold    : 0.939357
+Cal FPR      : 0.189%
+Cal FNR      : 43.386%
+
+Live tests   : 52/52 (100%)
+
+Top 15 Features
+-----------------------------------
+  trusted_reg_domain                   0.560097
+  trusted_hostname                     0.373451
+  label_count                          0.017354
+  brand_not_real                       0.010834
+  sub_len                              0.004905
+  brand_count                          0.004555
+  token_count                          0.003283
+  common_tld                           0.002893
+  sus_tld                              0.002414
+  digit_count                          0.002280
+  digit_run                            0.001144
+  sld_hyphens                          0.001021
+  sub_hyphens                          0.000942
+  sub_dots                             0.000769
+  keyword_count                        0.000743

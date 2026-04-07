@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Primary Brand Colors -->
+    <color name="cyan_primary">#1D4ED8</color>        <!-- Indigo Blue — buttons, CTAs -->
+    <color name="cyan_dark">#1E40AF</color>            <!-- Darker Indigo -->
+    <color name="navy_blue">#0F2B6B</color>            <!-- Deep Navy -->
+    <color name="blue_primary">#2563EB</color>         <!-- Bright Blue -->
+    <color name="blue_dark">#1E3A8A</color>            <!-- Dark Blue -->
+    <color name="accent_sky">#0EA5E9</color>           <!-- Sky Accent -->
+
+    <!-- Semantic Colors -->
+    <color name="success">#059669</color>              <!-- Emerald Green -->
+    <color name="success_bg">#3BEC99</color>           <!-- Light Green Tint -->
+    <color name="danger">#DC2626</color>               <!-- Red -->
+    <color name="danger_bg">#FEF2F2</color>            <!-- Light Red Tint -->
+    <color name="warning">#D97706</color>              <!-- Amber -->
+    <color name="warning_bg">#FFFBEB</color>           <!-- Light Amber Tint -->
+
+    <!-- Backgrounds -->
+    <color name="bg_deep">#F0F4FF</color>              <!-- Light Blue-White Canvas -->
+    <color name="bg_surface">#FFFFFF</color>           <!-- White Cards -->
+    <color name="bg_surface_2">#F8FAFF</color>         <!-- Subtle Tinted Surface -->
+    <color name="bg_surface_3">#EEF2FF</color>         <!-- Indigo Tinted Surface -->
+
+    <!-- Text -->
+    <color name="text_primary">#0F172A</color>         <!-- Slate 900 -->
+    <color name="text_secondary">#475569</color>       <!-- Slate 600 -->
+    <color name="text_hint">#94A3B8</color>            <!-- Slate 400 -->
+    <color name="text_on_primary">#FFFFFF</color>      <!-- White on brand bg -->
+    <color name="text_link">#2563EB</color>            <!-- Clickable text -->
+
+    <!-- Borders & Dividers -->
+    <color name="stroke">#E2E8F0</color>               <!-- Slate 200 -->
+    <color name="stroke_active">#1D4ED8</color>        <!-- Brand Blue -->
+    <color name="stroke_subtle">#F1F5F9</color>        <!-- Very subtle -->
+
+    <!-- Status / Shield -->
+    <color name="shield_active_bg">#EEF2FF</color>     <!-- Indigo 50 -->
+    <color name="shield_inactive_bg">#F8FAFC</color>   <!-- Slate 50 -->
+
+    <!-- Legacy aliases (for compatibility) -->
+    <color name="colorPrimary">@color/cyan_primary</color>
+    <color name="colorAccent">@color/cyan_primary</color>
+    <color name="md_theme_light_primary">#1D4ED8</color>
+    <color name="md_theme_light_onPrimary">#FFFFFF</color>
+    <color name="md_theme_light_primaryContainer">#EEF2FF</color>
+    <color name="md_theme_light_onPrimaryContainer">#0F2B6B</color>
+    <color name="verdict_safe">#2ECC71</color>
+    <color name="verdict_safe_bg">#1A2ECC71</color>
+    <color name="verdict_suspicious">#F39C12</color>
+    <color name="verdict_suspicious_bg">#1AF39C12</color>
+    <color name="verdict_phishing">#E74C3C</color>
+    <color name="verdict_phishing_bg">#1AE74C3C</color>
+</resources>

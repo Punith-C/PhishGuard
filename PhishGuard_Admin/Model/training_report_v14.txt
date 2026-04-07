@@ -1,0 +1,49 @@
+PhishGuard v14 — Training Report
+=======================================================
+
+Machine      : Linux Mint i5 8CPU 8GB+62GB swap
+Total time   : 54.2 minutes
+Features     : 72  (hostname-only, unchanged)
+Dataset      : 1,277,595  phish=129,747  legit=1,147,848
+
+TRUSTED_ROOTS: 69,609 domains
+  Seed curated: 1,171
+  Tranco top-70k: 69,069
+
+v14 CHANGES vs v13:
+  1. Expanded TRUSTED_ROOTS (~200 new: analytics, auth, fintech)
+  2. Hard negative injection (280 confusable-legit hosts)
+  3. XGB: depth 6->5, min_child_weight 8->12, gamma 0.5->1.0
+     reg_alpha 0.4->0.8, reg_lambda 3->4, scale_pos*0.85
+  4. NN: wider 256->512, label smoothing 0.05, scale_pos*0.65
+  5. Threshold target: 0.2%->0.1% FPR
+  6. run_ensemble() hard trust bypass (guaranteed 0 FP for roots)
+  7. More synthetic phishing: typosquat patterns + IP-based
+
+XGBoost   Acc=91.46%  F1=0.7014  AUC=0.9612  FPR=9.355%
+NeuralNet Acc=96.07%  F1=0.7825  AUC=0.9872  FPR=0.933%
+ENSEMBLE  Acc=96.07%  F1=0.7832  AUC=0.9872  FPR=0.958%
+
+Threshold    : 0.672822
+Cal FPR      : 0.104%
+Cal FNR      : 41.548%
+
+Live tests   : 67/68 (99%)
+
+Top 15 Features
+-----------------------------------
+  trusted_hostname                     0.306825
+  trusted_reg_domain                   0.301227
+  label_count                          0.113692
+  dot_count                            0.079032
+  sub_len                              0.040602
+  sld_hyphens                          0.037509
+  sub_count                            0.025208
+  sub_entropy                          0.023518
+  max_label_len                        0.011199
+  very_long_host                       0.010854
+  digit_count                          0.008607
+  sus_tld                              0.008579
+  token_count                          0.004908
+  sub_hyphens                          0.003814
+  digit_ratio                          0.002644

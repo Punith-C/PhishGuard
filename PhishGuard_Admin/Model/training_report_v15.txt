@@ -1,0 +1,58 @@
+PhishGuard v15  —  Training Report
+=======================================================
+
+Machine      : Linux Mint i5 8CPU 8GB+62GB swap
+Total time   : 36.1 minutes
+Features     : 72  (hostname-only, unchanged)
+Dataset      : 1,262,235  phish=122,642  legit=1,139,593
+
+TRUSTED_ROOTS: 69,547 domains
+
+v15 ROOT-CAUSE FIXES vs v13:
+  BUG: XGBoost stopped at best_iter=8 (only 4s training!)
+  CAUSE 1: eval_metric='auc' spiked immediately with
+    scale_pos_weight=8.8 + max_delta_step=2
+  CAUSE 2: early_stopping_rounds=40 fired too fast
+  FIX 1: eval_metric='logloss' (smooth, monotone)
+  FIX 2: max_delta_step=0 (disabled spike source)
+  FIX 3: early_stopping_rounds=100
+  FIX 4: scale_pos_weight capped at 6.0
+  FIX 5: n_estimators=3000 (was 1500)
+
+  NN: focal loss (gamma=2, alpha=0.75) replaces BCE
+    => focuses on hard boundary cases, not easy ones
+
+  DATA: 'urgent-account-blocked' style patterns added
+    to synthetic phishing (fixes v13 FN)
+
+  ENSEMBLE: AUC-proportional weighting (not hardcoded)
+
+XGBoost   Acc=92.49%  F1=0.7166  AUC=0.9862  FPR=8.084%
+NeuralNet Acc=93.89%  F1=0.7459  AUC=0.9865  FPR=5.952%
+ENSEMBLE  Acc=92.58%  F1=0.7189  AUC=0.9866  FPR=7.957%
+
+Threshold    : 0.794724
+Cal FPR      : 0.212%
+Cal FNR      : 40.819%
+
+Live tests   : 57/57 (100%)
+
+XGB weights: XGB=0.50  NN=0.50
+
+Top 15 Features
+-----------------------------------
+  trusted_hostname                     0.497314
+  trusted_reg_domain                   0.439723
+  label_count                          0.022066
+  brand_not_real                       0.007426
+  dot_count                            0.005061
+  sub_count                            0.004838
+  is_ip                                0.002922
+  brand_count                          0.002769
+  common_tld                           0.001700
+  token_count                          0.001466
+  keyword_count                        0.001343
+  sus_tld                              0.001052
+  brand_as_subdomain                   0.001016
+  digit_count                          0.000960
+  sub_len                              0.000659

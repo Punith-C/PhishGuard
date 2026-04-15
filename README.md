@@ -39,7 +39,6 @@ Technology Stack
 * Kotlin
 * Android
 * TensorFlow Lite
-* MVVM architecture
 
 How to Run
 

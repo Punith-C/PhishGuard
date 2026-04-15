@@ -16,9 +16,9 @@ Project Structure
 
 PhishGuard
 
-├── PhishGuard_Android_App    Android application (Kotlin)
+├── PhishGuard_Android_App -    Android application (Kotlin)
 
-├── PhishGuard_Admin           Machine learning training pipeline, Node.js backend and dashboard          
+├── PhishGuard_Admin -           Machine learning training pipeline, Node.js backend and dashboard          
 
 ---
 

@@ -15,8 +15,9 @@ PhishGuard is designed to detect phishing URLs directly on the user’s device u
 Project Structure
 
 PhishGuard
-│
+
 ├── PhishGuard_Android_App    Android application (Kotlin)
+
 ├── PhishGuard_Admin           Machine learning training pipeline, Node.js backend and dashboard          
 
 ---
